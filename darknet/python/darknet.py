@@ -136,7 +136,7 @@ def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
         for i in range(meta.classes):
             if dets[j].prob[i] > 0:
                 b = dets[j].bbox
-                res.append((meta.names[i], dets[j].prob[i], (b.x, b.y, b.w, b.h)))
+                res.append((meta.names[i].decode("utf-8"), dets[j].prob[i], (b.x, b.y, b.w, b.h)))
     res = sorted(res, key=lambda x: -x[1])
     wh = (im.w,im.h)
     free_image(im)
